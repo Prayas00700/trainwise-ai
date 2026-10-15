@@ -1,0 +1,82 @@
+[
+  {
+    "id": "cancellation_confirmed",
+    "title": "Cancelling a confirmed ticket",
+    "keywords": "cancel cancellation charges deduct deduction refund confirmed ticket hours before departure kitna katega कटेगा रद्द कैंसिल",
+    "text_en": "Confirmed tickets (rules in force since April 2026): cancel more than 72 hours before departure and only a flat charge per passenger is deducted (₹240 AC First, ₹200 AC 2-tier, ₹180 AC 3-tier or AC Chair Car, ₹120 Sleeper, ₹60 Second Sitting). Between 72 and 24 hours before departure, 25% of the fare is deducted; between 24 and 8 hours, 50% (both subject to the flat minimum). Cancelling less than 8 hours before departure gives no refund. IRCTC shows the exact deduction before you confirm a cancellation.",
+    "text_hi": "कन्फर्म टिकट (अप्रैल 2026 से लागू नियम): प्रस्थान से 72 घंटे से पहले रद्द करने पर प्रति यात्री केवल एक निश्चित शुल्क कटता है (एसी फर्स्ट ₹240, एसी 2-टियर ₹200, एसी 3-टियर या एसी चेयर कार ₹180, स्लीपर ₹120, सेकंड सिटिंग ₹60)। प्रस्थान से 72 से 24 घंटे पहले किराए का 25% और 24 से 8 घंटे पहले 50% कटता है (दोनों पर न्यूनतम निश्चित शुल्क लागू)। प्रस्थान से 8 घंटे से कम समय पहले रद्द करने पर कोई रिफंड नहीं मिलता। रद्द करने की पुष्टि से पहले IRCTC सही कटौती दिखाता है।",
+    "source": "New India Samachar (PIB), 16-30 April 2026; IANS via Morung Express, 24 March 2026; flat amounts per RailMitra, 4 August 2026",
+    "source_url": "https://newindiasamachar.pib.gov.in/WriteReadData/flipbook/2026/Apr/2nd/English/files/basic-html/page7.html",
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "cancellation_rac_wl",
+    "title": "Cancelling RAC or waitlisted tickets",
+    "keywords": "rac waitlist waitlisted wl cancel refund clerkage chart auto cancelled वेटलिस्ट आरएसी",
+    "text_en": "RAC and waitlisted e-tickets can be cancelled up to 30 minutes before departure; the fare is refunded after deducting a clerkage charge of ₹60 per passenger. E-tickets that are still fully waitlisted when the chart is prepared are cancelled automatically and the refund goes back to the original payment method.",
+    "text_hi": "आरएसी और वेटलिस्ट ई-टिकट प्रस्थान से 30 मिनट पहले तक रद्द किए जा सकते हैं; प्रति यात्री ₹60 क्लर्केज शुल्क काटकर किराया वापस किया जाता है। चार्ट बनने तक पूरी तरह वेटलिस्ट रहने वाले ई-टिकट अपने-आप रद्द हो जाते हैं और रिफंड मूल भुगतान माध्यम में वापस जाता है।",
+    "source": "gconnect.in (IRCTC refund rules); RailMitra, 4 August 2026",
+    "source_url": "https://www.gconnect.in/orders-in-brief/railways-orders-in-brief/irctc-train-ticket-cancellation-refund-rules-ac-1-ac-2-ac-3-sleeper-class-tickets.html",
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "tatkal",
+    "title": "Tatkal booking and Tatkal refunds",
+    "keywords": "tatkal booking time open opens timing aadhaar otp agent refund तत्काल kitne baje",
+    "text_en": "Tatkal booking opens one day before the journey: 10:00 AM for AC classes (2A/3A/CC/EC/3E) and 11:00 AM for non-AC classes (SL/FC/2S). Online Tatkal booking needs an Aadhaar-authenticated IRCTC account and OTP verification, and authorised agents cannot book in the first 30 minutes. Confirmed Tatkal tickets get no refund on cancellation.",
+    "text_hi": "तत्काल बुकिंग यात्रा से एक दिन पहले खुलती है: एसी श्रेणियों (2A/3A/CC/EC/3E) के लिए सुबह 10:00 बजे और नॉन-एसी (SL/FC/2S) के लिए सुबह 11:00 बजे। ऑनलाइन तत्काल बुकिंग के लिए आधार-सत्यापित IRCTC खाता और ओटीपी सत्यापन ज़रूरी है, और अधिकृत एजेंट पहले 30 मिनट में बुकिंग नहीं कर सकते। कन्फर्म तत्काल टिकट रद्द करने पर कोई रिफंड नहीं मिलता।",
+    "source": "Ministry of Railways circular of 10 June 2025 (reported by Business Standard and PIB); RailMitra, 4 August 2026",
+    "source_url": "https://www.business-standard.com/india-news/aadhaar-verification-mandatory-irctc-tatkal-bookings-july-2025-125061101001_1.html",
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "advance_reservation",
+    "title": "How far in advance you can book",
+    "keywords": "advance reservation period days in advance book how early arp kitne din pehle दिन पहले",
+    "text_en": "General reservations open 60 days in advance; the advance reservation period was cut from 120 days to 60 days.",
+    "text_hi": "सामान्य आरक्षण 60 दिन पहले से खुलता है; अग्रिम आरक्षण अवधि 120 दिन से घटाकर 60 दिन की गई थी।",
+    "source": "Business Standard",
+    "source_url": "https://www.business-standard.com/topic/train-tickets",
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "chart_preparation",
+    "title": "When the reservation chart is prepared",
+    "keywords": "chart prepared preparation charting when final status chart kab banta चार्ट",
+    "text_en": "Reservation charts are now generated between 9 and 18 hours before departure (April 2026 reform), so the final waitlist position is known earlier than before.",
+    "text_hi": "आरक्षण चार्ट अब प्रस्थान से 9 से 18 घंटे पहले तैयार होते हैं (अप्रैल 2026 सुधार), इसलिए वेटलिस्ट की अंतिम स्थिति पहले की तुलना में जल्दी पता चल जाती है।",
+    "source": "New India Samachar (PIB), 16-30 April 2026",
+    "source_url": "https://newindiasamachar.pib.gov.in/WriteReadData/flipbook/2026/Apr/2nd/English/files/basic-html/page7.html",
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "tdr_late_train",
+    "title": "Refund when the train is very late (TDR)",
+    "keywords": "tdr train late delay delayed hours refund not travelled late hai ट्रेन लेट टीडीआर",
+    "text_en": "If your train runs more than 3 hours late and no passenger on the PNR travels, you can claim a full refund by filing a TDR online before the train actually departs. Each TDR claim is reviewed individually.",
+    "text_hi": "यदि ट्रेन 3 घंटे से अधिक लेट है और पीएनआर पर किसी भी यात्री ने यात्रा नहीं की, तो ट्रेन के वास्तविक प्रस्थान से पहले ऑनलाइन टीडीआर दाखिल करके पूरा रिफंड माँगा जा सकता है। हर टीडीआर दावे की अलग से जाँच होती है।",
+    "source": "RailMitra, 4 August 2026",
+    "source_url": "https://www.railmitra.com/blog/irctc-refund-rules",
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "refund_timeline",
+    "title": "Where refunds go",
+    "keywords": "refund credited money back payment upi card bank wallet when receive रिफंड पैसा paisa",
+    "text_en": "Refunds for online tickets go back to the original payment method (card, UPI, net banking or wallet). The time taken depends on the payment provider; keep your PNR and transaction ID ready if you need to raise a query with IRCTC.",
+    "text_hi": "ऑनलाइन टिकट का रिफंड मूल भुगतान माध्यम (कार्ड, यूपीआई, नेट बैंकिंग या वॉलेट) में वापस जाता है। इसमें लगने वाला समय भुगतान सेवा प्रदाता पर निर्भर करता है; IRCTC से शिकायत करनी हो तो पीएनआर और ट्रांज़ैक्शन आईडी तैयार रखें।",
+    "source": "RailMitra, 4 August 2026",
+    "source_url": "https://www.railmitra.com/blog/irctc-refund-rules",
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "booking_steps",
+    "title": "How to book a ticket",
+    "keywords": "how to book booking steps passenger details quota senior citizen ladies kaise book बुक कैसे",
+    "text_en": "To book: sign in to IRCTC, search trains between your stations for the date, choose a class and quota (General, Tatkal, Ladies or Lower Berth/Senior Citizen where available), add passenger details and pay. Check the availability status (AVL, RAC or WL) before paying.",
+    "text_hi": "बुकिंग के लिए: IRCTC में लॉग-इन करें, तारीख़ के अनुसार अपने स्टेशनों के बीच ट्रेनें खोजें, श्रेणी और कोटा चुनें (सामान्य, तत्काल, महिला या लोअर बर्थ/वरिष्ठ नागरिक, जहाँ उपलब्ध हो), यात्री विवरण भरें और भुगतान करें। भुगतान से पहले उपलब्धता स्थिति (AVL, RAC या WL) ज़रूर देखें।",
+    "source": "General IRCTC booking flow",
+    "source_url": "https://www.irctc.co.in",
+    "verified_on": "2026-10-15"
+  }
+]

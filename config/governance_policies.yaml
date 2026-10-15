@@ -1,0 +1,103 @@
+# Watchtower governance policies ("policy as code").
+#
+# Every threshold the autonomous governance layer acts on is declared here, so its
+# behaviour is reviewable in a pull request, versioned in git and auditable.
+# Changing a number here changes what the governance agents consider an incident.
+version: "1.0"
+
+sla:
+  p95_latency_ms: 250          # per-model inference SLA (95th percentile)
+  max_error_rate: 0.02
+  max_blocked_rate: 0.05       # share of requests rejected by the data-quality gate
+  min_requests: 30             # evidence needed before judging a service
+
+drift:
+  psi_warning: 0.10
+  psi_critical: 0.25
+  ks_pvalue: 0.001
+  min_samples: 200
+  # Calendar features shift by design (live traffic is always "the next 60 days"), so they are
+  # reported but never raise drift alarms; their effect is caught by performance monitoring.
+  seasonal_features: [month, day_of_week, is_festival_window, demand_index]
+
+performance:
+  window: 600                  # most recent labelled predictions considered
+  min_labelled: 150
+  relative_tolerance: 0.08     # alert when the live metric is >8% worse than the validated baseline
+  page_hinkley_delta: 0.005
+  page_hinkley_threshold: 25.0
+
+fairness:
+  max_parity_gap: 0.10         # max gap in accuracy / false-positive rate between passenger segments
+  min_group_size: 40
+  max_exposure_shift: 0.15     # recommender: premium-train exposure vs the approved baseline ranker
+  max_budget_violations: 0.02  # recommender: share of top picks above the passenger's budget
+
+genai:
+  min_groundedness: 0.70
+  max_flag_rate: 0.05
+  max_escalation_rate: 0.35
+  min_csat: 3.5
+
+agents:
+  max_steps: 14
+  max_tool_errors: 2
+  max_latency_ms: 4000
+  max_passengers_per_booking: 6
+  approval_ttl_minutes: 15
+
+lifecycle:
+  min_uplift: 0.0              # a challenger must at least match the champion on recent data
+  recent_weight: 3             # recent labelled rows are up-weighted when retraining
+  max_autonomous_actions_per_cycle: 8   # circuit breaker against runaway remediation loops
+
+model_defaults:
+  risk_tier: medium
+  autonomous_actions: [retrain, promote, rollback, quarantine_feed, tighten_guardrail, scale_out, notify]
+
+models:
+  confirmation_predictor:
+    owner: passenger-ai
+    primary_metric: accuracy
+    higher_is_better: true
+    floor: 0.70
+    fairness_segment: quota
+    fairness_groups: [GN, LD, SS]   # general vs ladies vs senior-citizen quotas
+    fairness_metric: accuracy
+  delay_predictor:
+    owner: operations-ai
+    primary_metric: mae
+    higher_is_better: false
+    floor: 25.0
+  fare_demand_forecaster:
+    owner: revenue-ai
+    primary_metric: mae
+    higher_is_better: false
+    floor: 0.08
+  fraud_detector:
+    owner: security-ai
+    primary_metric: recall
+    higher_is_better: true
+    floor: 0.80
+    guard_metrics: {fpr: 0.06}
+    fairness_segment: region_segment
+    fairness_metric: fpr
+    risk_tier: high            # wrongly blocking genuine passengers is high-impact
+    autonomous_actions: [retrain, tighten_guardrail, notify]   # promotion needs a human
+    decision_costs:            # rupee-equivalent costs that set the challenge / block thresholds
+      false_challenge: 15      # a genuine passenger asked for OTP or CAPTCHA
+      false_block: 400         # a genuine booking lost
+      missed_fraud: 250        # seats hoarded or resold, plus investigation effort
+  intent_classifier:
+    owner: support-ai
+    primary_metric: accuracy
+    higher_is_better: true
+    floor: 0.85
+  train_recommender:
+    owner: passenger-ai
+  support_assistant:
+    owner: support-ai
+  travel_planner:
+    owner: passenger-ai
+    risk_tier: high
+    autonomous_actions: [tighten_guardrail, notify]

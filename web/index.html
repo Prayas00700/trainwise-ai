@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>TrainWise AI: smarter railway travel, governed AI</title>
+<meta name="description" content="AI-powered railway travel services watched over by Watchtower, an autonomous AI-governance layer. Synthetic-data prototype.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<a class="skip" href="#plan">Skip to the journey planner</a>
+
+<header class="topbar">
+  <a class="brand" href="#top">TrainWise <span>AI</span></a>
+  <nav class="nav" id="nav" aria-label="Sections">
+    <a href="#plan">Plan</a>
+    <a href="#confirm">Confirmation</a>
+    <a href="#trains">Trains</a>
+    <a href="#delays">Delays</a>
+    <a href="#fares">Fares</a>
+    <a href="#support">Support</a>
+    <a href="#security">Security</a>
+    <a href="#watchtower" class="nav-watchtower">Watchtower console</a>
+  </nav>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+
+<main id="top">
+  <section class="hero container">
+    <div class="hero-text">
+      <p class="eyebrow">Intelligent railway travel with governed AI</p>
+      <h1>Travel smarter. Trust the AI that plans it.</h1>
+      <p class="lead">Seven AI services predict confirmations, forecast delays, time your fare and plan journeys in plain language. Watchtower, an autonomous governance layer, watches every model and agent, fixes what it can, and asks a person for the rest.</p>
+      <div class="stats" aria-label="Key numbers">
+        <div><b>7</b><span>AI services</span></div>
+        <div><b>7</b><span>governance agents</span></div>
+        <div><b>8</b><span>failure drills</span></div>
+        <div><b>38</b><span>automated tests</span></div>
+      </div>
+      <p class="fineprint">Prototype on synthetic data: real station codes, invented trains, fares and passengers.</p>
+    </div>
+
+    <div class="hero-card" id="plan">
+      <h2>Plan a journey</h2>
+      <p class="muted">Describe the trip in your own words, in English, Hindi or Hinglish.</p>
+      <form id="planForm" class="form">
+        <label>Your trip
+          <textarea id="planQuery" rows="3">I want to travel from Pune to Delhi tomorrow under ₹1500 and reach before 10:00 AM.</textarea>
+        </label>
+        <div class="row">
+          <label>Passenger profile
+            <select id="planUser">
+              <option value="">Guest</option>
+              <option value="U001" selected>U001 (prefers Sleeper, Duronto)</option>
+              <option value="U002">U002</option><option value="U003">U003</option><option value="U004">U004</option><option value="U005">U005</option>
+            </select>
+          </label>
+          <button class="btn primary" type="submit">Plan my journey</button>
+        </div>
+      </form>
+      <div class="result" id="planResult"></div>
+    </div>
+  </section>
+
+  <div class="track" aria-hidden="true"></div>
+
+  <section class="container services">
+    <div class="section-head">
+      <p class="eyebrow">Passenger services</p>
+      <h2>Every answer comes with its reasons</h2>
+      <p class="muted">Each service is a governed model: inputs are validated, predictions are logged, and explanations are part of the answer.</p>
+    </div>
+
+    <div class="grid">
+      <article class="panel" id="confirm">
+        <h3>Will my waitlisted ticket confirm?</h3>
+        <form id="confirmForm" class="form">
+          <label>Train <select name="train" data-trains data-default="92201"></select></label>
+          <div class="row">
+            <label>Class <select name="cls" data-classes-for="train"></select></label>
+            <label>Days until journey <input type="number" name="days" min="0" max="60" value="3"></label>
+          </div>
+          <div class="row">
+            <label>Status <select name="kind"><option>WL</option><option>RAC</option></select></label>
+            <label>Number <input type="number" name="position" min="1" max="500" value="24"></label>
+            <label>Quota <select name="quota"><option value="GN">General</option><option value="TQ">Tatkal</option><option value="LD">Ladies</option><option value="SS">Lower berth / senior</option></select></label>
+          </div>
+          <button class="btn primary" type="submit">Predict</button>
+        </form>
+        <div class="result" id="confirmResult"></div>
+      </article>
+
+      <article class="panel" id="trains">
+        <h3>Which train should I take?</h3>
+        <form id="trainsForm" class="form">
+          <div class="row">
+            <label>From <select name="origin" data-cities data-default="Pune"></select></label>
+            <label>To <select name="destination" data-cities data-default="Delhi"></select></label>
+            <label>Days from today <input type="number" name="days" min="1" max="60" value="1"></label>
+          </div>
+          <div class="row">
+            <label>Budget per passenger (₹, blank for none) <input type="number" name="budget" min="0" step="100" placeholder="e.g. 1500"></label>
+            <label>Passenger profile <select name="user"><option value="">Guest</option><option value="U001">U001</option><option value="U002">U002</option><option value="U003">U003</option></select></label>
+          </div>
+          <fieldset class="chips"><legend>What matters most</legend>
+            <label><input type="checkbox" name="prefs" value="cheapest"> cheapest</label>
+            <label><input type="checkbox" name="prefs" value="fastest"> fastest</label>
+            <label><input type="checkbox" name="prefs" value="punctual"> punctual</label>
+            <label><input type="checkbox" name="prefs" value="confirmed"> confirmed seat</label>
+          </fieldset>
+          <button class="btn primary" type="submit">Suggest trains</button>
+        </form>
+        <div class="result" id="trainsResult"></div>
+      </article>
+
+      <article class="panel" id="delays">
+        <h3>Delays and disruptions</h3>
+        <form id="delayForm" class="form">
+          <label>Train <select name="train" data-trains data-default="92205"></select></label>
+          <label>Days from today <input type="number" name="days" min="0" max="60" value="1"></label>
+          <button class="btn primary" type="submit">Forecast delay</button>
+        </form>
+        <div class="result" id="delayResult"></div>
+      </article>
+
+      <article class="panel" id="fares">
+        <h3>Fare forecast and the best time to book</h3>
+        <form id="fareForm" class="form">
+          <label>Train <select name="train" data-trains="dynamic" data-default="92209"></select></label>
+          <div class="row">
+            <label>Class <select name="cls" data-classes-for="train"></select></label>
+            <label>Days until journey <input type="number" name="days" min="1" max="60" value="45"></label>
+          </div>
+          <button class="btn primary" type="submit">Forecast fare</button>
+        </form>
+        <div class="result" id="fareResult"></div>
+      </article>
+
+      <article class="panel wide" id="support">
+        <h3>Support chat</h3>
+        <p class="muted">Ask in English, Hindi or Hinglish. Every reply is checked against the evidence it was built from before you see it.</p>
+        <div class="quick" id="quickPrompts">
+          <button type="button">Status of PNR 4521873690</button>
+          <button type="button">मेरा पीएनआर 6203914785 का स्टेटस क्या है</button>
+          <button type="button">What are the cancellation charges?</button>
+          <button type="button">Where is my refund for PNR 2718281828?</button>
+          <button type="button">kal pune se delhi jana hai 1500 ke andar</button>
+        </div>
+        <div class="chat" id="chatLog" aria-live="polite"></div>
+        <form id="chatForm" class="chat-form">
+          <input id="chatInput" placeholder="Type your question" autocomplete="off">
+          <button class="btn primary" type="submit">Send</button>
+        </form>
+        <div class="rating" id="rating"></div>
+      </article>
+
+      <article class="panel" id="security">
+        <h3>Fraud and bot detection</h3>
+        <form id="fraudForm" class="form">
+          <label>Start from a session profile <select id="fraudPreset"></select></label>
+          <div class="row wrap" id="fraudFields"></div>
+          <div class="row">
+            <label>Device <select name="device_type"><option>mobile</option><option>desktop</option></select></label>
+            <label>Region <select name="region_segment"><option>metro</option><option>tier2</option><option>tier3</option></select></label>
+          </div>
+          <button class="btn primary" type="submit">Score session</button>
+        </form>
+        <div class="result" id="fraudResult"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="watchtower" id="watchtower">
+    <div class="container">
+      <div class="watchtower-head">
+        <div>
+          <p class="eyebrow">Watchtower control room</p>
+          <h2>Autonomous AI governance</h2>
+          <p>Seven governance agents watch every model and agent. Each cycle they find problems, trace root causes, fix what policy allows, verify the fix, and ask a person to approve the rest.</p>
+        </div>
+        <label class="keybox">Operator key
+          <input id="opsKey" value="demo-admin-key" spellcheck="false">
+          <small>Demo keys: demo-ops-key can read, demo-admin-key can act.</small>
+        </label>
+      </div>
+
+      <div class="table-wrap dark">
+        <table class="board" id="board">
+          <thead><tr><th>Service</th><th>Signal</th><th>Version or mode</th><th>Requests</th><th>p95 ms</th><th>Live metric</th><th>Input drift</th></tr></thead>
+          <tbody><tr><td colspan="7" class="muted">Loading…</td></tr></tbody>
+        </table>
+      </div>
+      <p class="fineprint light">Signal aspects borrow from Indian Railways colour-light signals: green clear, double yellow attention, yellow caution, red danger.</p>
+
+      <div class="drill">
+        <button class="btn ghost light" id="btnNormal" type="button">Send normal traffic</button>
+        <div class="scenarios" id="scenarios"></div>
+        <button class="btn ghost light" id="btnInject" type="button">Inject selected failures</button>
+        <button class="btn accent" id="btnCycle" type="button">Run governance cycle</button>
+      </div>
+      <p class="status" id="govStatus"></p>
+      <div id="cycleOut"></div>
+
+      <h3>Waiting for a person</h3>
+      <div id="approvals" class="approvals"><p class="muted">No approvals pending.</p></div>
+
+      <div class="tabs" role="tablist">
+        <button data-tab="registry" class="active" role="tab">Model registry</button>
+        <button data-tab="audit" role="tab">Audit trail</button>
+        <button data-tab="report" role="tab">Report</button>
+      </div>
+      <div class="tab-body" id="tab-registry"></div>
+      <div class="tab-body hidden" id="tab-audit"></div>
+      <div class="tab-body hidden" id="tab-report"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer container">
+  <p><b>TrainWise AI</b> is a prototype built for the <em>AI-Powered Intelligent Railway Travel &amp; Autonomous AI Governance Platform</em> problem statement. All trains, fares, passengers and incidents are synthetic.</p>
+  <p>REST API docs at <a href="/docs">/docs</a>. Source and design notes in the project README.</p>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
