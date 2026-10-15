@@ -30,14 +30,14 @@ The website (`web/`) is plain HTML, CSS and JavaScript with no build step, serve
 ```
 P1 delay_predictor [resolved]
    found by DriftAgent: input drift: rain_index (PSI 0.56), fog_index (PSI 0.49), upstream_delay_min (PSI 0.17)
-   found by PerformanceAgent: mae 49.834 vs validated 7.661 (551% worse) and below the policy floor
+   found by PerformanceAgent: mae 49.862 vs validated 7.721 (546% worse) and below the policy floor
    root cause (74%): Covariate shift: production inputs moved outside the training distribution ...
    action retrain: promoted v2 | verified: hold-out mae 47.8 -> 8.8; canary on 200 fresh requests: champion 45.8 vs challenger 10.2; mae 9.6 on 400 fresh 'winter_fog' requests
 P1 fraud_detector [awaiting_human_approval]
    found by PerformanceAgent: recall 0.255 vs validated 1.000 (74% worse) and below the policy floor
    action retrain: challenger v2 hold-out recall 0.42 -> 0.94; canary: champion 0.25 vs challenger 0.84; promotion needs a human (high-risk service)
 P2 train_recommender [resolved]
-   found by FairnessAgent: premium trains get 85% of top-3 exposure vs 66% under the approved ranker
+   found by FairnessAgent: premium trains get 85% of top-3 exposure vs 65% under the approved ranker
    root cause (85%): Change shipped in deployment v2 skews outcomes (by release-pipeline)
    action rollback: rolled back to v1 | verified: premium exposure shift +0.00 on 25 probe searches
 P2 support_assistant [resolved]
@@ -46,13 +46,13 @@ P2 support_assistant [resolved]
 ```
 
 5. **Human in the loop.** A reviewer approves the retrained fraud model, and the bot it previously missed is now blocked.
-6. **Closed loop.** On 400 unseen festive-season tickets, accuracy rises from 0.787 (v1) to 0.845 (the autonomously retrained v2). v2 still over-predicts confirmations (21% predicted vs 11% actual): no input feature captures this season's collapse in cancellations, so a real-time cancellation-rate feed is the next fix rather than more retraining.
+6. **Closed loop.** On 400 unseen festive-season tickets, accuracy rises from 0.815 (v1) to 0.863 (the autonomously retrained v2). v2 still over-predicts confirmations (24% predicted vs 14% actual): no input feature captures this season's collapse in cancellations, so a real-time cancellation-rate feed is the next fix rather than more retraining (see the fresh-feature experiment below).
 7. **Follow-up cycle.** It notices that delay inputs are still unusual but accuracy is fine, so it notifies the owner and does not retrain.
 8. **Audit trail.** The log verifies end to end, and a copy with one edited line fails verification.
 
 ## What changed in v2
 
-Everything below was built after the first submission and is verified by the test suite or a script in `scripts/`.
+Everything below was added in a second iteration, after the first end-to-end version worked, and is verified by the test suite or a script in `scripts/`.
 
 | Improvement | What it does | Evidence |
 |---|---|---|
